@@ -6,15 +6,15 @@ import java.util.function.Predicate;
 import Model.Employee;
 
 public interface ServiceInterface {
-	public void loadData(String fname);
-	public void writeData ();
-	public void exportEmployeeList();
-	public void exportEmployeeList(ArrayList<Employee> list);
-	public void deleteEmployeeById(Predicate<Employee> employee);
-	public void updateEmployeeInfo(Predicate<Employee> employee);
-	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee);
-	public void sortListByName();
-	public void sortListBySalary();
-	public void enterListOfEmployee();
-	public void exportOlderEmployee();
+	public void loadData(String fname); //Vu
+	public void writeData (); // Vu
+	public void exportEmployeeList(); //Dung
+	public void exportEmployeeList(ArrayList<Employee> list); //Dung
+	public void deleteEmployeeById(Predicate<Employee> employee);//Hoang
+	public void updateEmployeeInfo(Predicate<Employee> employee); //Hoang
+	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee);//Hoang
+	public void sortListByName(); //Binh
+	public void sortListBySalary();//Binh
+	public void enterListOfEmployee(); //Khanh
+	public void exportOlderEmployee(); //Hoang
 }
