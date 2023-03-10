@@ -65,17 +65,4 @@ public class CompanyService implements ServiceInterface{
 		// TODO Auto-generated method stub
 		
 	}
-	@Override
-	public void deleteEmployee() {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void updateEmployeeInfo() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-
 }
