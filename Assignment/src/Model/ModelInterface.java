@@ -1,5 +1,5 @@
 package Model;
 
-public class ModelInterface {
-
+public interface ModelInterface {
+	public Long calculateInCome();
 }
