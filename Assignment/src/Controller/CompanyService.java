@@ -79,6 +79,19 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public void sortListBySalary() {
 		// TODO Auto-generated method stub
+		Collections.sort(employeeList, new Comparator<Employee>() {
+
+			@Override
+			public int compare(Employee o1, Employee o2) {
+				// TODO Auto-generated method stub
+				return o1.getSalary().compareTo(o2.getSalary());
+			}
+		
+		}  );
+		 for (int i = 0; i < employeeList.size(); i++) {
+	            System.out.println(employeeList.get(i).toString());
+	        }
+		
 	}
 	@Override
 	public void enterListOfEmployee() {
