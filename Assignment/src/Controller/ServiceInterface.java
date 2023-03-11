@@ -15,6 +15,5 @@ public interface ServiceInterface {
 	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee);//Hoang
 	public void sortListByName(); //Binh
 	public void sortListBySalary();//Binh
-	public void enterListOfEmployee(); //Khanh
 	public void exportOlderEmployee(); //Hoang
 }

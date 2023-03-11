@@ -51,6 +51,9 @@ public class Employee {
 	public void setSalary(Long salary) {
 		this.salary = salary;
 	}
+	public Employee() {
+		super();
+	}
 	
 	public Employee(String id, String name, Integer age, String email, String address, Long salary) {
 		super();
@@ -66,4 +69,8 @@ public class Employee {
 		return "Employee [id=" + id + ", name=" + name + ", age=" + age + ", email=" + email + ", address=" + address
 				+ ", salary=" + salary + "]";
 	}
+	public Long calculateIncome() {
+		return (long) 0;
+	}
+
 }

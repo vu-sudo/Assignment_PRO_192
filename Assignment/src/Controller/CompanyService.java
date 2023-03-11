@@ -15,6 +15,7 @@ import Model.AdministrativeStaff;
 import Model.DepartmentManager;
 import Model.MarketingStaff;
 import Model.Employee;
+import View.Validation;
 
 public class CompanyService implements ServiceInterface{
 
@@ -132,11 +133,108 @@ public class CompanyService implements ServiceInterface{
 	        }
 		
 	}
-	@Override
-	public void enterListOfEmployee() {
-		// TODO Auto-generated method stub
-		
+	public Employee search(String code) {
+		code = code.trim().toUpperCase();
+		for(Employee ls : employeeList) {
+			if (ls.getId().equals(code))
+				return ls;
+		}
+		return null;
 	}
+	
+	public boolean isCodeDuplicated (String code) {
+		code = code.trim().toUpperCase();
+		return search(code) != null;
+	}
+
+
+	public void enterAdministrativeStaff() {
+		String newId;
+		String newName;
+		Integer newAge;
+		String newAddress;
+		String newEmail;
+		Long newSalary;
+		boolean codeDuplicated = false;
+		do {
+			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1}");
+			newId = newId.trim().toUpperCase();
+			codeDuplicated = isCodeDuplicated(newId);
+			if (codeDuplicated) {
+				System.out.println("ID is duplicated");
+			}
+		}
+		while (codeDuplicated == true);
+		newName = Validation.inputNonBlankStr("Name of employee: ");
+		newName = newName.toUpperCase();
+		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
+		newAddress = Validation.inputNonBlankStr("Address: ");
+		newEmail = Validation.inputNonBlankStr("Email: ");
+		newSalary = Validation.InputLong("Salary: ", 0, 1000000000);
+		Employee administrative = new AdministrativeStaff("Administrative Staff", newId, newName, newAge, newAddress, newEmail, newSalary);
+		employeeList.add(administrative);
+	}
+	
+	public void enterMarketingStaff() {
+		String newId;
+		String newName;
+		Integer newAge;
+		String newAddress;
+		String newEmail;
+		Long newSalary;
+		Integer newSale;
+		Double newCommission;
+		boolean codeDuplicated = false;
+		do {
+			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1}");
+			newId = newId.trim().toUpperCase();
+			codeDuplicated = isCodeDuplicated(newId);
+			if (codeDuplicated) {
+				System.out.println("ID is duplicated");
+			}
+		}
+		while (codeDuplicated == true);
+		newName = Validation.inputNonBlankStr("Name of employee: ");
+		newName = newName.toUpperCase();
+		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
+		newAddress = Validation.inputNonBlankStr("Address: ");
+		newEmail = Validation.inputNonBlankStr("Email: ");
+		newSalary = Validation.InputLong("Salary: ", 0, 1000000000);
+		newSale = Validation.InputInt("Sales: ", 0, 1000000);
+		newCommission = Validation.InputDouble("Commission: ", 0.0, 10000.0);
+		Employee marketing = new MarketingStaff("Marketing Staff", newId, newName, newAge, newAddress, newEmail, newSalary, newSale, newCommission);
+		employeeList.add(marketing);
+	}
+	
+	public void enterManager() {
+		String newId;
+		String newName;
+		Integer newAge;
+		String newAddress;
+		String newEmail;
+		Long newSalary;
+		Long newResponsibleSalary;
+		boolean codeDuplicated = false;
+		do {
+			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1}");
+			newId = newId.trim().toUpperCase();
+			codeDuplicated = isCodeDuplicated(newId);
+			if (codeDuplicated) {
+				System.out.println("ID is duplicated");
+			}
+		}
+		while (codeDuplicated == true);
+		newName = Validation.inputNonBlankStr("Name of employee: ");
+		newName = newName.toUpperCase();
+		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
+		newAddress = Validation.inputNonBlankStr("Address: ");
+		newEmail = Validation.inputNonBlankStr("Email: ");
+		newSalary = Validation.InputLong("Salary: ", 0, 1000000000);
+		newResponsibleSalary = Validation.InputLong("Responsible salary", 0, 1000000000);
+		Employee manager = new DepartmentManager("Department Manager", newId, newName, newAge, newAddress, newEmail, newSalary, newResponsibleSalary);
+		employeeList.add(manager);
+	}
+	
 	@Override
 	public void exportOlderEmployee() {
 		// TODO Auto-generated method stub

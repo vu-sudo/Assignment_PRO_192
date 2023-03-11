@@ -11,6 +11,10 @@ public class AdministrativeStaff extends Employee implements ModelInterface{
 	public void setRole(String role) {
 		this.role = role;
 	}
+	
+	public AdministrativeStaff() {
+		super();
+	}
 
 	public AdministrativeStaff(String role,String id, String name, Integer age, String email, String address, Long salary) {
 		super(id, name, age, email, address, salary);
