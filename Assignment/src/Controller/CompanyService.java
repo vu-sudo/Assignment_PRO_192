@@ -34,14 +34,14 @@ public class CompanyService implements ServiceInterface{
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fName)));
 			while((line = br.readLine()) != null) {
 				String[] l = line.split(";");
-				if(l[0].equals("Department Manager")) {
-					employeeList.add(new DepartmentManager(l[1], l[2], Integer.parseInt(l[3]), l[4], l[5], Long.parseLong(l[6]), Long.parseLong(l[7])));
+				if(l[0].equals("Department manager")) {
+					employeeList.add(new DepartmentManager(l[1], l[2], Integer.parseInt(l[3]), l[5], l[4], Long.parseLong(l[6]), Long.parseLong(l[7])));
 					
 				} else if (l[0].equals("Marketing staff")) {
-					employeeList.add(new MarketingStaff(l[1], l[2], Integer.parseInt(l[3]), l[4], l[5],Long.parseLong(l[6]), Integer.parseInt(l[7]), Double.parseDouble(l[8])));
+					employeeList.add(new MarketingStaff(l[1], l[2], Integer.parseInt(l[3]), l[5], l[4],Long.parseLong(l[6]), Integer.parseInt(l[7]), Double.parseDouble(l[8])));
 					
 				} else if (l[0].equals("Administrative staff")) {
-					employeeList.add(new AdministrativeStaff(l[1], l[2], Integer.parseInt(l[3]), l[4], l[5], Long.parseLong(l[6])));
+					employeeList.add(new AdministrativeStaff(l[1], l[2], Integer.parseInt(l[3]), l[5], l[4], Long.parseLong(l[6])));
 				}
 			}
 		} catch (Exception e) {
@@ -55,7 +55,9 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void exportEmployeeList() {
-		// TODO Auto-generated method stub
+		for (Employee item: employeeList) {
+			System.out.println(item.toString());
+		}
 		
 	}
 	@Override

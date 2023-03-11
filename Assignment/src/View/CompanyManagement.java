@@ -22,11 +22,15 @@ public class CompanyManagement extends Menu{
 		super("COMPANY EMPLOYEES MANAGEMENT", menu);
 		// TODO Auto-generated constructor stub
 	}
-
+	public void Display() {
+		service.exportEmployeeList();
+	}
 	@Override
 	public void execute(int n) {
 		switch(n) {
-		case 1: System.out.println("1"); break; //Display all employee.
+		case 1:
+			Display();
+			break; //Display all employee.
 		case 2: System.out.println("2"); break; //Delete a employee by id
 		case 3: System.out.println("3"); break; //Update info a employee by id.
 		case 4: System.out.println("4"); break; //Find employee by salary.

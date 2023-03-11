@@ -7,6 +7,14 @@ public class Employee {
 	private String email;
 	private String address;
 	private Long salary;
+	protected Long income;
+	
+	public Long getIncome() {
+		return income;
+	}
+	public void setIncome(Long income) {
+		this.income = income;
+	}
 	public String getId() {
 		return id;
 	}

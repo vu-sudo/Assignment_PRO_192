@@ -6,55 +6,45 @@ public class MarketingStaff extends Employee implements ModelInterface{
 	private Double commissionSalary;
 
 
-	public MarketingStaff(String id, String name, Integer age, String email, String address, Long salary,
-		
-		Integer sales, Double commissionSalary) {
+	public MarketingStaff(String id, String name, Integer age, String email, String address, Long salary,	Integer sales, Double commissionSalary) {
 		super(id, name, age, email, address, salary);
 		this.sales = sales;
 		this.commissionSalary = commissionSalary;
+		this.calculateInCome();
 	}
-
-
 
 	public double getSales() {
 		return sales;
 	}
 
-
-
 	public void setSales(Integer sales) {
 		this.sales = sales;
 	}
-
-
 
 	public Double getCommissionSalary() {
 		return commissionSalary;
 	}
 
-
-
 	public void setCommissionSalary(Double commissionSalary) {
 		this.commissionSalary = commissionSalary;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "MarketingManager [sales=" + sales + ", commissionSalary=" + commissionSalary + ", getSales()="
-				+ getSales() + ", getCommissionSalary()=" + getCommissionSalary() + ", calculateInCome()="
-				+ calculateInCome() + ", getId()=" + getId() + ", getName()=" + getName() + ", getAge()=" + getAge()
-				+ ", getEmail()=" + getEmail() + ", getAddress()=" + getAddress() + ", getSalary()=" + getSalary()
-				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ "]";
+		return "MarketingManager [Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
+				+ ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary=" + this.getSalary()
+				+ ", Sales" + sales + ", Commission Salary" + commissionSalary +", Income=" + this.getIncome() +"]";
 	}
 
 
 	@Override
 	public Long calculateInCome() {
-		// TODO Auto-generated method stub
-		return null;
+		Long realSalary = (long) (this.getSalary() + this.getSales()*this.getCommissionSalary());
+		this.income = (long) 0;
+		if (realSalary < 9000000) this.income = realSalary;
+		if (realSalary >= 9000000 && realSalary <= 15000000) this.income = (long) (realSalary*0.9);
+		if (realSalary > 15000000) this.income = (long) (realSalary*0.88);
+		return this.income;
 	}
 	
 }

@@ -17,20 +17,23 @@ public class DepartmentManager extends Employee implements ModelInterface{
 			Long responsibleSalary) {
 		super(id, name, age, email, address, salary);
 		this.responsibleSalary = responsibleSalary;
+		this.calculateInCome();
 	}
 
 	@Override
 	public String toString() {
-		return "DepartmentManager [responsibleSalary=" + responsibleSalary + ", getResponsibleSalary()="
-				+ getResponsibleSalary() + ", getId()=" + getId() + ", getName()=" + getName() + ", getAge()="
-				+ getAge() + ", getEmail()=" + getEmail() + ", getAddress()=" + getAddress() + ", getSalary()="
-				+ getSalary() + ", toString()=" + super.toString() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + "]";
+		return "DepartmentManager [Id=" + this.getId() + ", Name=" + this.getName() + ", Age()="
+				+ this.getAge() + ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary="
+				+ this.getSalary() + ", Responsible salary=" + responsibleSalary +", Income=" + this.getIncome() + "]";
 	}
 	
 	@Override
 	public Long calculateInCome() {
-		// TODO Auto-generated method stub
-		return null;
+		Long realSalary = (this.getSalary() + this.getResponsibleSalary());
+		this.income = (long) 0;
+		if (realSalary < 9000000) this.income = realSalary;
+		if (realSalary >= 9000000 && realSalary <= 15000000) this.income = (long) (realSalary*0.9);
+		if (realSalary > 15000000) this.income = (long) (realSalary*0.88);
+		return this.income;
 	}
 }
