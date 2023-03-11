@@ -41,7 +41,7 @@ public class CompanyService implements ServiceInterface{
 					employeeList.add(new MarketingStaff(l[0], l[1], l[2], Integer.parseInt(l[3]), l[5], l[4],Long.parseLong(l[6]), Integer.parseInt(l[7]), Double.parseDouble(l[8])));
 					
 				} else if (l[0].equals("Administrative staff")) {
-					employeeList.add(new AdministrativeStaff(l[0 ], l[1], l[2], Integer.parseInt(l[3]), l[5], l[4], Long.parseLong(l[6])));
+					employeeList.add(new AdministrativeStaff(l[0], l[1], l[2], Integer.parseInt(l[3]), l[5], l[4], Long.parseLong(l[6])));
 				}
 			}
 		} catch (Exception e) {

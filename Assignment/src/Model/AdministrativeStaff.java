@@ -2,27 +2,27 @@ package Model;
 
 public class AdministrativeStaff extends Employee implements ModelInterface{
 	
-	private String rule;
+	private String role;
 
-	public String getRule() {
-		return rule;
+	public String getRole() {
+		return role;
 	}
 
-	public void setRule(String rule) {
-		this.rule = rule;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 		
-	public AdministrativeStaff(String rule,String id, String name, Integer age, String email, String address, Long salary) {
+	public AdministrativeStaff(String role,String id, String name, Integer age, String email, String address, Long salary) {
 		super(id, name, age, email, address, salary);
 		// TODO Auto-generated constructor stub
-		this.rule = rule;
+		this.role = role;
 		this.calculateInCome();
 	}
 
 	@Override
 	public String toString() {
-		return "Rule: " + this.getRule() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
+		return "Role: " + this.getRole() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
 				+ ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary=" + this.getSalary() + ", Income=" + this.getIncome() + "]";
 	}
 	@Override
