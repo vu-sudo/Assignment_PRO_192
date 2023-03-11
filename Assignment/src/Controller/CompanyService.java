@@ -54,16 +54,19 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void exportEmployeeList() {
-		for (Employee item: employeeList) {
-			System.out.println(item.toString());
+		for (Employee ls: employeeList) {
+			System.out.println(ls.toString());
 		}
 		
 	}
 	@Override
 	public void exportEmployeeList(ArrayList<Employee> list) {
 		// TODO Auto-generated method stub
-		
+		for (Employee ls : employeeList) {
+			System.out.println(ls.toString());
+		}
 	}
+	
 	@Override
 	public void deleteEmployeeById(Predicate<Employee> employee) {
 		// TODO Auto-generated method stub
