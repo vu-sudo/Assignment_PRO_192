@@ -18,7 +18,6 @@ public class MarketingStaff extends Employee implements ModelInterface{
 
 	public MarketingStaff(String rule,String id, String name, Integer age, String email, String address, Long salary,	Integer sales, Double commissionSalary) {
 		super(id, name, age, email, address, salary);
-		this.rule = rule;
 		this.sales = sales;
 		this.commissionSalary = commissionSalary;
 		this.calculateInCome();

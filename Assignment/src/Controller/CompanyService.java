@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
 import java.util.*;
@@ -50,7 +52,17 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void writeData() {
-		
+		try {
+			FileWriter wf = new FileWriter("StoreEmployeeData.txt");
+			for (Employee item: employeeList) {
+				wf.write(item + System.lineSeparator());
+			}
+			wf.close();
+			System.out.println("Successfully wrote to the file!");
+		}	catch(IOException e) {
+			System.out.println("An error occured.");
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public void exportEmployeeList() {

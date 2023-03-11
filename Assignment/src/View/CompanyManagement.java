@@ -36,7 +36,9 @@ public class CompanyManagement extends Menu{
 		case 4: System.out.println("4"); break; //Find employee by salary.
 		case 5: System.out.println("5"); break; //Sort list of employee.
 		case 6: System.out.println("6"); break; //Enter list a employee.
-		case 7: System.out.println("7"); break; //Save list of employees to file.
+		case 7: 
+			service.writeData();
+			break; 
 		case 8: System.out.println("8"); break; //Export three older employee with highest salary.
 		case 9: System.out.println("Program end! \nThank you for using my program");
 		default: System.exit(0);
