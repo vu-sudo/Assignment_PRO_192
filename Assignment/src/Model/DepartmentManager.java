@@ -2,6 +2,15 @@ package Model;
 
 public class DepartmentManager extends Employee implements ModelInterface{
 	private Long responsibleSalary;
+	private String rule;
+
+	public String getRule() {
+		return rule;
+	}
+
+	public void setRule(String rule) {
+		this.rule = rule;
+	}
 
 	public Long getResponsibleSalary() {
 		return responsibleSalary;
@@ -13,16 +22,17 @@ public class DepartmentManager extends Employee implements ModelInterface{
 
 
 	
-	public DepartmentManager(String id, String name, Integer age, String email, String address, Long salary,
+	public DepartmentManager(String rule,String id, String name, Integer age, String email, String address, Long salary,
 			Long responsibleSalary) {
 		super(id, name, age, email, address, salary);
+		this.rule = rule;
 		this.responsibleSalary = responsibleSalary;
 		this.calculateInCome();
 	}
 
 	@Override
 	public String toString() {
-		return "DepartmentManager [Id=" + this.getId() + ", Name=" + this.getName() + ", Age()="
+		return  "Rule: " + this.getRule() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age()="
 				+ this.getAge() + ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary="
 				+ this.getSalary() + ", Responsible salary=" + responsibleSalary +", Income=" + this.getIncome() + "]";
 	}

@@ -4,10 +4,21 @@ public class MarketingStaff extends Employee implements ModelInterface{
 	
 	private Integer sales;
 	private Double commissionSalary;
+	private String rule;
+
+	public String getRule() {
+		return rule;
+	}
+
+	public void setRule(String rule) {
+		this.rule = rule;
+	}
 
 
-	public MarketingStaff(String id, String name, Integer age, String email, String address, Long salary,	Integer sales, Double commissionSalary) {
+
+	public MarketingStaff(String rule,String id, String name, Integer age, String email, String address, Long salary,	Integer sales, Double commissionSalary) {
 		super(id, name, age, email, address, salary);
+		this.rule = rule;
 		this.sales = sales;
 		this.commissionSalary = commissionSalary;
 		this.calculateInCome();
@@ -31,7 +42,7 @@ public class MarketingStaff extends Employee implements ModelInterface{
 
 	@Override
 	public String toString() {
-		return "MarketingManager [Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
+		return "Rule: " + this.getRule() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
 				+ ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary=" + this.getSalary()
 				+ ", Sales" + sales + ", Commission Salary" + commissionSalary +", Income=" + this.getIncome() +"]";
 	}

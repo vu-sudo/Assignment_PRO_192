@@ -35,7 +35,7 @@ public class CompanyService implements ServiceInterface{
 			while((line = br.readLine()) != null) {
 				String[] l = line.split(";");
 				if(l[0].equals("Department manager")) {
-					employeeList.add(new DepartmentManager(l[1], l[2], Integer.parseInt(l[3]), l[5], l[4], Long.parseLong(l[6]), Long.parseLong(l[7])));
+					employeeList.add(new DepartmentManager(l[0], l[1], l[2], Integer.parseInt(l[3]), l[5], l[4], Long.parseLong(l[6]), Long.parseLong(l[7])));
 					
 				} else if (l[0].equals("Marketing staff")) {
 					employeeList.add(new MarketingStaff(l[1], l[2], Integer.parseInt(l[3]), l[5], l[4],Long.parseLong(l[6]), Integer.parseInt(l[7]), Double.parseDouble(l[8])));
@@ -50,7 +50,6 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void writeData() {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
