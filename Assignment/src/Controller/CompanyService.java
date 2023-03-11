@@ -33,11 +33,9 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public void deleteEmployeeById(Predicate<Employee> employee) {
 		// TODO Auto-generated method stub
-		System.out.println("Enter ID:");
-		String id = scan.nextLine();
-		for(int i = 0; i<employeeList.size();i++) {
-			if(id.equalsIgnoreCase(employeeList.get(i).getId())) {
-				employeeList.remove(employeeList.get(i));
+		for(Employee i : employeeList) {
+			if(employee.test(i)) {
+				employeeList.remove(i);
 			}
 		}
 	}
@@ -50,12 +48,8 @@ public class CompanyService implements ServiceInterface{
 	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee) {
 		// TODO Auto-generated method stub
 		ArrayList<Employee> temp = new ArrayList<>();
-		System.out.println("Enter salary:");
-		Long salary = scan.nextLong();
-		for(int i = 0; i< employeeList.size();i++) {
-			if(salary.equals(employeeList.get(i).getSalary()))  {
-				temp.add(employeeList.get(i));
-			}
+		for(Employee i : employeeList) {
+			if (employee.test(i)) temp.add(i);
 		}
 		return temp;
 	}
