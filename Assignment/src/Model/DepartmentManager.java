@@ -1,21 +1,24 @@
 package Model;
 
 public class DepartmentManager extends Employee implements ModelInterface{
-	private long responsibleSalary;
+	private Long responsibleSalary;
 
-	public long getResponsibleSalary() {
+	public Long getResponsibleSalary() {
 		return responsibleSalary;
 	}
 
-	public void setResponsibleSalary(long responsibleSalary) {
+	public void setResponsibleSalary(Long responsibleSalary) {
 		this.responsibleSalary = responsibleSalary;
 	}
 
-	public DepartmentManager(String id, String name, Integer age, String email, String address, Long salary) {
-		super(id, name, age, email, address, salary);
-		// TODO Auto-generated constructor stub
-	}
+
 	
+	public DepartmentManager(String id, String name, Integer age, String email, String address, Long salary,
+			Long responsibleSalary) {
+		super(id, name, age, email, address, salary);
+		this.responsibleSalary = responsibleSalary;
+	}
+
 	@Override
 	public String toString() {
 		return "DepartmentManager [responsibleSalary=" + responsibleSalary + ", getResponsibleSalary()="

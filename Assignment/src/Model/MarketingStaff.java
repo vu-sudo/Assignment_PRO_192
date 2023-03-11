@@ -1,13 +1,17 @@
 package Model;
 
-public class MarketingManager extends Employee implements ModelInterface{
+public class MarketingStaff extends Employee implements ModelInterface{
 	
-	private double sales;
-	private long commissionSalary;
+	private Integer sales;
+	private Double commissionSalary;
 
-	public MarketingManager(String id, String name, Integer age, String email, String address, Long salary) {
+
+	public MarketingStaff(String id, String name, Integer age, String email, String address, Long salary,
+		
+		Integer sales, Double commissionSalary) {
 		super(id, name, age, email, address, salary);
-		// TODO Auto-generated constructor stub
+		this.sales = sales;
+		this.commissionSalary = commissionSalary;
 	}
 
 
@@ -18,19 +22,19 @@ public class MarketingManager extends Employee implements ModelInterface{
 
 
 
-	public void setSales(double sales) {
+	public void setSales(Integer sales) {
 		this.sales = sales;
 	}
 
 
 
-	public long getCommissionSalary() {
+	public Double getCommissionSalary() {
 		return commissionSalary;
 	}
 
 
 
-	public void setCommissionSalary(long commissionSalary) {
+	public void setCommissionSalary(Double commissionSalary) {
 		this.commissionSalary = commissionSalary;
 	}
 
