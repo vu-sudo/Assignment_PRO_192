@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import Model.Employee;
 
 public interface ServiceInterface {
-	public void loadData(String fname); //Vu
+	public void loadData(String fName); //Vu
 	public void writeData (); // Vu
 	public void exportEmployeeList(); //Dung
 	public void exportEmployeeList(ArrayList<Employee> list); //Dung

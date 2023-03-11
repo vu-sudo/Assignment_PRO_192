@@ -66,11 +66,9 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public void deleteEmployeeById(Predicate<Employee> employee) {
 		// TODO Auto-generated method stub
-		System.out.println("Enter ID:");
-		String id = scan.nextLine();
-		for(int i = 0; i<employeeList.size();i++) {
-			if(id.equalsIgnoreCase(employeeList.get(i).getId())) {
-				employeeList.remove(employeeList.get(i));
+		for(Employee i : employeeList) {
+			if(employee.test(i)) {
+				employeeList.remove(i);
 			}
 		}
 	}
@@ -81,25 +79,42 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee) {
-		// TODO Auto-generated method stub
 		ArrayList<Employee> temp = new ArrayList<>();
-		System.out.println("Enter salary:");
-		Long salary = scan.nextLong();
-		for(int i = 0; i< employeeList.size();i++) {
-			if(salary.equals(employeeList.get(i).getSalary()))  {
-				temp.add(employeeList.get(i));
-			}
+		for(Employee i : employeeList) {
+			if (employee.test(i)) temp.add(i);
 		}
 		return temp;
 	}
 	@Override
 	public void sortListByName() {
-		// TODO Auto-generated method stub
+		Collections.sort(employeeList, new Comparator<Employee>() {
+
+			@Override
+			public int compare(Employee o1, Employee o2) {
+				// TODO Auto-generated method stub
+				return o1.getName().compareTo(o2.getName());
+			}
+
+		}  );
+		 for (int i = 0; i < employeeList.size(); i++) {
+	            System.out.println(employeeList.get(i).toString());
+	        }
 		
 	}
 	@Override
 	public void sortListBySalary() {
-		// TODO Auto-generated method stub
+		Collections.sort(employeeList, new Comparator<Employee>() {
+
+			@Override
+			public int compare(Employee o1, Employee o2) {
+				// TODO Auto-generated method stub
+				return o1.getSalary().compareTo(o2.getSalary());
+			}
+
+		}  );
+		 for (int i = 0; i < employeeList.size(); i++) {
+	            System.out.println(employeeList.get(i).toString());
+	        }
 		
 	}
 	@Override
