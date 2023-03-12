@@ -18,7 +18,6 @@ public class AdministrativeStaff extends Employee implements ModelInterface{
 
 	public AdministrativeStaff(String role,String id, String name, Integer age, String email, String address, Long salary) {
 		super(id, name, age, email, address, salary);
-		// TODO Auto-generated constructor stub
 		this.role = role;
 		this.calculateInCome();
 	}

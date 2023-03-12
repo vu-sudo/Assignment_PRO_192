@@ -8,7 +8,7 @@ public class Employee {
 	private String address;
 	private Long salary;
 	protected Long income;
-	
+
 	public Long getIncome() {
 		return income;
 	}

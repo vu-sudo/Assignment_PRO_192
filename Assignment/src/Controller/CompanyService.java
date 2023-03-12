@@ -95,49 +95,43 @@ public class CompanyService implements ServiceInterface{
 		if(employeeList.isEmpty()) {
 			System.out.println("Empty list");
 		} else {
-			Employee employees = new Employee();
-			System.out.println("Enter ID: ");
-			String id = scan.nextLine();
-			for(Employee i : employeeList) {
-				if(id.equalsIgnoreCase(i.getId())) {
+			String id = Validation.inputStr("Input ID to update employee: ");
+			Employee employees = this.search(id);
+			if (employees == null) {
+				System.out.println("Employee " + id + " doesn't exist!");
+			} else {
 					//Update name
 					String oldName = employees.getName();
-					System.out.println("Old name: "+ oldName);
-					System.out.println("New name: ");
-					String newName = scan.nextLine();
+					String msg = "Old name: " + oldName + ", new name: ";
+					String newName = Validation.inputNonBlankStr(msg);
+					newName.toUpperCase();
 					employees.setName(newName);
 					//Update age
 					Integer oldAge = employees.getAge();
-					System.out.println("Old age: "+oldAge);
-					System.out.println("New age: ");
-					Integer newAge = scan.nextInt();
+					msg = "Old age: " + oldAge + ", new age <above 18>: ";
+					Integer newAge = Validation.InputInt(msg, 18, 100);
 					employees.setAge(newAge);
 					//Update email
 					String oldEmail = employees.getEmail();
-					System.out.println("Old email: "+ oldEmail);
-					System.out.println("New email: ");
-					String newEmail = scan.nextLine();
+					msg = "Old email: " + oldEmail + ", new email: ";
+					String newEmail = Validation.inputNonBlankStr(msg);
 					employees.setEmail(newEmail);
 					//Update address
 					String oldAddress = employees.getAddress();
-					System.out.println("Old address: "+ oldAddress);
-					System.out.println("New Address: ");
-					String newAddress = scan.nextLine();
+					msg = "Old address: " + oldAddress + ", new address: ";
+					String newAddress = Validation.inputNonBlankStr(msg);
 					employees.setAddress(newAddress);
 					//Update salary
 					Long oldSalary = employees.getSalary();
-					System.out.println("Old salary: "+oldSalary);
-					System.out.println("New salary:");
-					Long newSalary = scan.nextLong();
+					msg = "Old salary: " + oldSalary + ", new salary: ";
+					Long newSalary = Validation.InputLong(msg, 0, 1000000000);
 					employees.setSalary(newSalary);
 					
-				} else {
-					System.out.println("Student "+ id +"doesn't existed!");
 				}
 			}
 		}
 		
-	}
+	
 	@Override
 	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee) {
 		ArrayList<Employee> temp = new ArrayList<>();
