@@ -1,5 +1,5 @@
 Department manager;D3;Phan Van Canh;25;Kom Tum;canh@gmail.com;645000000;6314514
-Department manager;D3;Bui Van Lam;24;Da Nang;lam@gmail.com;60000000;250000
+Department manager;D6;Bui Van Lam;24;Da Nang;lam@gmail.com;60000000;250000
 Marketing staff;D4;Le Hoang Nam;22;Hue;nam@gmail.com;50000000;45121;33333
 Administrative staff;D1;Dinh Van Ha;20;Kom Tum;ha@gmail.com;20000000
 Administrative staff;D2;Dinh Van Binh;20;Ha Noi;binh@gmail.com;6520000

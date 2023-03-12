@@ -30,7 +30,9 @@ public class CompanyManagement extends Menu{
 		case 1:
 			Display();
 			break; //Display all employee.
-		case 2: System.out.println("2"); break; //Delete a employee by id
+		case 2: 
+			service.deleteEmployeeById();
+			break; //Delete a employee by id
 		case 3: System.out.println("3"); break; //Update info a employee by id.
 		case 4: System.out.println("4"); break; //Find employee by salary.
 		case 5: System.out.println("5"); break; //Sort list of employee.
@@ -49,6 +51,7 @@ public class CompanyManagement extends Menu{
 	public void Display() {
 		service.exportEmployeeList();
 	}
+
 	
 	public void EnterListOfEmployee() {
 		Scanner sc = new Scanner(System.in);

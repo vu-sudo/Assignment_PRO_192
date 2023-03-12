@@ -10,8 +10,8 @@ public interface ServiceInterface {
 	public void writeData (); // Vu
 	public void exportEmployeeList(); //Dung
 	public void exportEmployeeList(ArrayList<Employee> list); //Dung
-	public void deleteEmployeeById(Predicate<Employee> employee);//Hoang
-	public void updateEmployeeInfo(Predicate<Employee> employee); //Hoang
+	public void deleteEmployeeById();//Hoang
+	public void updateEmployeeInfo(); //Hoang
 	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee);//Hoang
 	public void sortListByName(); //Binh
 	public void sortListBySalary();//Binh

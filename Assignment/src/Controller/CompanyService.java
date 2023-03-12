@@ -74,24 +74,28 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void exportEmployeeList(ArrayList<Employee> list) {
-		// TODO Auto-generated method stub
 		for (Employee ls : employeeList) {
 			System.out.println(ls.toString());
 		}
 	}
 	
 	@Override
-	public void deleteEmployeeById(Predicate<Employee> employee) {
-		// TODO Auto-generated method stub
-		for(Employee i : employeeList) {
-			if(employee.test(i)) {
-				employeeList.remove(i);
+	public void deleteEmployeeById() {
+		if(employeeList.isEmpty()) {
+			System.out.println("Empty list. No remove can be performed!");
+		} else {
+			String eID = Validation.inputStr("Input ID to delete employee: ");
+			Employee employee = this.search(eID);
+			if (employee == null) {
+				System.out.println("Employee " + eID + " does not exist!");
+			} else {
+				employeeList.remove(employee);
+				System.out.println("Employee " + eID + " has been removed");
 			}
 		}
 	}
 	@Override
-	public void updateEmployeeInfo(Predicate<Employee> employee) {
-		// TODO Auto-generated method stub
+	public void updateEmployeeInfo() {
 		if(employeeList.isEmpty()) {
 			System.out.println("Empty list");
 		} else {
@@ -143,32 +147,21 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public void sortListByName() {
 		Collections.sort(employeeList, new Comparator<Employee>() {
-
 			@Override
 			public int compare(Employee o1, Employee o2) {
 				return o1.getName().compareTo(o2.getName());
 			}
-
 		}  );
-		 for (int i = 0; i < employeeList.size(); i++) {
-	            System.out.println(employeeList.get(i).toString());
-	        }
-		
 	}
 	@Override
 	public void sortListBySalary() {
 		Collections.sort(employeeList, new Comparator<Employee>() {
-
 			@Override
 			public int compare(Employee o1, Employee o2) {
 				return o1.getSalary().compareTo(o2.getSalary());
 			}
 
 		}  );
-		 for (int i = 0; i < employeeList.size(); i++) {
-	            System.out.println(employeeList.get(i).toString());
-	        }
-		
 	}
 	public Employee search(String code) {
 		code = code.trim().toUpperCase();
@@ -284,7 +277,7 @@ public class CompanyService implements ServiceInterface{
 
 		}  );
 		for(Employee i: employeeList) {
-			if(i.getAge()>=50) {
+			if(i.getAge()>=60) {
 				for(int j = 0; j<3; j++) {
 					System.out.println(i.toString());
 				}
