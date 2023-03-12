@@ -1,6 +1,0 @@
-Role: Department manager, Id=D3, Name=Phan Van Canh, Age()=25, Email=canh@gmail.com, Address=Kom Tum, Salary=645000000, Responsible salary=6314514, Income=573156772]
-Role: Department manager, Id=D3, Name=Bui Van Lam, Age()=24, Email=lam@gmail.com, Address=Da Nang, Salary=60000000, Responsible salary=250000, Income=53020000]
-Role: Marketing staff, Id=D4, Name=Le Hoang Nam, Age=22, Email=nam@gmail.com, Address=Hue, Salary=50000000, Sales45121, Commission Salary33333.0, Income=1367536097]
-Role: Administrative staff, Id=D1, Name=Dinh Van Ha, Age=20, Email=ha@gmail.com, Address=Kom Tum, Salary=20000000, Income=17600000]
-Role: Administrative staff, Id=D2, Name=Dinh Van Binh, Age=20, Email=binh@gmail.com, Address=Ha Noi, Salary=6520000, Income=6520000]
-Role: Marketing Staff, Id=D5, Name=VO VAN VU, Age=23, Email=QUang Nam, Address=vuvu@gamil.com, Salary=500000000, Sales3243, Commission Salary23.0, Income=440065638]

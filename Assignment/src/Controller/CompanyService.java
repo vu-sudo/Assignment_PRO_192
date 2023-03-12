@@ -1,6 +1,5 @@
 package Controller;
 
-import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,6 +25,10 @@ public class CompanyService implements ServiceInterface{
 		super();
 		String path = Paths.get("").toAbsolutePath().toString();
 		loadData(path + "/src/Controller/employeeSource.txt" );
+	}
+	
+	public ArrayList<Employee> returnList() {
+		return employeeList;
 	}
 	
 	@Override
@@ -54,7 +57,8 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public void writeData() {
 		try {
-			FileWriter wf = new FileWriter("StoreEmployeeData.txt");
+			String path = Paths.get("").toAbsolutePath().toString();
+			FileWriter wf = new FileWriter(path + "/src/Controller/StoreEmployeeData.txt");
 			for (Employee item: employeeList) {
 				wf.write(item + System.lineSeparator());
 			}
@@ -74,7 +78,7 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void exportEmployeeList(ArrayList<Employee> list) {
-		for (Employee ls : employeeList) {
+		for (Employee ls : list) {
 			System.out.println(ls.toString());
 		}
 	}
@@ -158,7 +162,7 @@ public class CompanyService implements ServiceInterface{
 		Collections.sort(employeeList, new Comparator<Employee>() {
 			@Override
 			public int compare(Employee o1, Employee o2) {
-				return o1.getSalary().compareTo(o2.getSalary());
+				return o2.getIncome().compareTo(o1.getIncome());
 			}
 
 		}  );
@@ -266,22 +270,20 @@ public class CompanyService implements ServiceInterface{
 	}
 	
 	@Override
-	public void exportOlderEmployee() {
-		// TODO Auto-generated method stub
-		Collections.sort(employeeList, new Comparator<Employee>() {
-
-			@Override
-			public int compare(Employee o2, Employee o1) {
-				return Long.compare(o1.getIncome(), o2.getIncome());
-			}
-
-		}  );
+	public ArrayList<Employee> exportOlderEmployee() {
+		Set<Employee> setList = new HashSet<>();
+		ArrayList<Employee> olderEmployee = new ArrayList<>();
+		this.sortListBySalary();
+		
 		for(Employee i: employeeList) {
 			if(i.getAge()>=60) {
 				for(int j = 0; j<3; j++) {
-					System.out.println(i.toString());
+					setList.add(i);
 				}
 			}
 		}
+		olderEmployee.addAll(setList);
+		setList.clear();
+		return olderEmployee;
 	}
 }

@@ -24,8 +24,8 @@ public class AdministrativeStaff extends Employee implements ModelInterface{
 
 	@Override
 	public String toString() {
-		return "Role: " + this.getRole() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
-				+ ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary=" + this.getSalary() + ", Income=" + this.getIncome() + "]";
+		return "[ " +"Role: " + this.getRole() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
+				+ ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary=" + this.getSalary() + ", Income=" + this.getIncome() + " ]";
 	}
 	@Override
 	public Long calculateInCome() {

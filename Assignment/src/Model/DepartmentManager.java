@@ -20,8 +20,6 @@ public class DepartmentManager extends Employee implements ModelInterface{
 		this.responsibleSalary = responsibleSalary;
 	}
 
-
-	
 	public DepartmentManager(String role,String id, String name, Integer age, String email, String address, Long salary,
 			Long responsibleSalary) {
 		super(id, name, age, email, address, salary);
@@ -32,9 +30,9 @@ public class DepartmentManager extends Employee implements ModelInterface{
 
 	@Override
 	public String toString() {
-		return  "Role: " + this.getRole() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age()="
+		return  "[ " + "Role: " + this.getRole() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age="
 				+ this.getAge() + ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary="
-				+ this.getSalary() + ", Responsible salary=" + responsibleSalary +", Income=" + this.getIncome() + "]";
+				+ this.getSalary() + ", Responsible salary=" + responsibleSalary +", Income=" + this.getIncome() + " ]";
 	}
 	
 	@Override

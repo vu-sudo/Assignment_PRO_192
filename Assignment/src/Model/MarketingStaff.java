@@ -42,9 +42,9 @@ public class MarketingStaff extends Employee implements ModelInterface{
 
 	@Override
 	public String toString() {
-		return "Role: " + this.getRole() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
+		return  "[ " + "Role: " + this.getRole() + ", Id=" + this.getId() + ", Name=" + this.getName() + ", Age=" + this.getAge()
 				+ ", Email=" + this.getEmail() + ", Address=" + this.getAddress() + ", Salary=" + this.getSalary()
-				+ ", Sales" + sales + ", Commission Salary" + commissionSalary +", Income=" + this.getIncome() +"]";
+				+ ", Sales" + sales + ", Commission Salary" + commissionSalary +", Income=" + this.getIncome() +"] " ;
 	}
 
 
