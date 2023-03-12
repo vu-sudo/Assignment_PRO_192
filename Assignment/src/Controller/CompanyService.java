@@ -92,7 +92,50 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public void updateEmployeeInfo(Predicate<Employee> employee) {
 		// TODO Auto-generated method stub
-		//Hoang test push
+		if(employeeList.isEmpty()) {
+			System.out.println("Empty list");
+		} else {
+			Employee employees = new Employee();
+			System.out.println("Enter ID: ");
+			String id = scan.nextLine();
+			for(Employee i : employeeList) {
+				if(id.equalsIgnoreCase(i.getId())) {
+					//Update name
+					String oldName = employees.getName();
+					System.out.println("Old name: "+ oldName);
+					System.out.println("New name: ");
+					String newName = scan.nextLine();
+					employees.setName(newName);
+					//Update age
+					Integer oldAge = employees.getAge();
+					System.out.println("Old age: "+oldAge);
+					System.out.println("New age: ");
+					Integer newAge = scan.nextInt();
+					employees.setAge(newAge);
+					//Update email
+					String oldEmail = employees.getEmail();
+					System.out.println("Old email: "+ oldEmail);
+					System.out.println("New email: ");
+					String newEmail = scan.nextLine();
+					employees.setEmail(newEmail);
+					//Update address
+					String oldAddress = employees.getAddress();
+					System.out.println("Old address: "+ oldAddress);
+					System.out.println("New Address: ");
+					String newAddress = scan.nextLine();
+					employees.setAddress(newAddress);
+					//Update salary
+					Long oldSalary = employees.getSalary();
+					System.out.println("Old salary: "+oldSalary);
+					System.out.println("New salary:");
+					Long newSalary = scan.nextLong();
+					employees.setSalary(newSalary);
+					
+				} else {
+					System.out.println("Student "+ id +"doesn't existed!");
+				}
+			}
+		}
 		
 	}
 	@Override
@@ -238,6 +281,20 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public void exportOlderEmployee() {
 		// TODO Auto-generated method stub
-		
+		Collections.sort(employeeList, new Comparator<Employee>() {
+
+			@Override
+			public int compare(Employee o2, Employee o1) {
+				return Long.compare(o1.getIncome(), o2.getIncome());
+			}
+
+		}  );
+		for(Employee i: employeeList) {
+			if(i.getAge()>=50) {
+				for(int j = 0; j<3; j++) {
+					System.out.println(i.toString());
+				}
+			}
+		}
 	}
 }
