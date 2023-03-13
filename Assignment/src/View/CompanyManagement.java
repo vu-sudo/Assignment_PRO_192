@@ -14,7 +14,7 @@ public class CompanyManagement extends Menu{
 			"Display all employee.",
 			"Delete a employee by id.",
 			"Update info a employee by id.",
-			"Find employee by salary.",
+			"Find employee by range of salary.",
 			"Sort list of employee.",
 			"Enter list a employee.",
 			"Save list of employees to file.",
