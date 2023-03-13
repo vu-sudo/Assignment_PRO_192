@@ -35,7 +35,9 @@ public class CompanyManagement extends Menu{
 		case 2: 
 			service.deleteEmployeeById();
 			break; //Delete a employee by id
-		case 3: System.out.println("3"); break; //Update info a employee by id.
+		case 3: 
+			service.updateEmployeeInfo();
+			break; //Update info a employee by id.
 		case 4: System.out.println("4"); break; //Find employee by salary.
 		case 5: 
 			Sort();
