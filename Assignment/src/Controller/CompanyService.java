@@ -60,7 +60,7 @@ public class CompanyService implements ServiceInterface{
 			String path = Paths.get("").toAbsolutePath().toString();
 			FileWriter wf = new FileWriter(path + "/src/Controller/StoreEmployeeData.txt");
 			for (Employee item: employeeList) {
-				wf.write(item + System.lineSeparator()c);
+				wf.write(item + System.lineSeparator());
 			}
 			wf.close();
 			System.out.println("Successfully wrote to the file!");
