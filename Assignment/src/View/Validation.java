@@ -55,11 +55,12 @@ public class Validation {
 	
 	public static String inputNonBlankStr (String msg) {
 		String data;
+		String pattern = "^[a-zA-Z]{4,}(?: [a-zA-Z]+){0,2}$";
 		do {
 			System.out.print(msg);
 			data = sc.nextLine().trim();
 		}
-		while (data.length() == 0);
+		while (data.length() == 0 && !data.matches(pattern));
 		return data;
 	}
 	
