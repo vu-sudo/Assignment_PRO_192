@@ -38,7 +38,9 @@ public class CompanyManagement extends Menu{
 		case 3: 
 			service.updateEmployeeInfo();
 			break; //Update info a employee by id.
-		case 4: System.out.println("4"); break; //Find employee by salary.
+		case 4: 
+			findBySalaryRange();
+			break; //Find employee by salary.
 		case 5: 
 			Sort();
 			break; //Sort list of employee.
@@ -94,6 +96,17 @@ public class CompanyManagement extends Menu{
 				
 			};
 			m.run();
+		}
+	}
+	public void findBySalaryRange() {
+		Long minSalary = Validation.InputLong("Enter min salary: ", 0, 1000000000);
+		Long maxSalar = Validation.InputLong("Enter max salary: ", 0, 1000000000);
+		
+		ArrayList<Employee> temp = service.findEmpployeeBySalaryRange(minSalary, maxSalar);
+		if(temp.isEmpty()) {
+			System.out.println("HAVE NO EMPLOYEE IN THIS RANGE OF SALARY!");
+		} else {
+			service.exportEmployeeList(temp);
 		}
 	}
 	public void exportOlderEmpoyeeList() {

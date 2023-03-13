@@ -167,6 +167,16 @@ public class CompanyService implements ServiceInterface{
 		}
 		return temp;
 	}
+
+	public ArrayList<Employee> findEmpployeeBySalaryRange(Long minSalary, Long maxSalary) {
+		ArrayList<Employee> temp = new ArrayList<>();
+		for(Employee item: employeeList) {
+			if(item.getIncome() >= minSalary && item.getIncome() <= maxSalary) {
+				temp.add(item);
+			}
+		}
+		return temp;
+	}
 	@Override
 	public void sortListByName() {
 		Collections.sort(employeeList, new Comparator<Employee>() {
