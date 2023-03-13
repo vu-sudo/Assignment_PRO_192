@@ -29,8 +29,8 @@ public class AdministrativeStaff extends Employee implements ModelInterface{
 	}
 	@Override
 	public Long calculateInCome() {
-		this.income = this.getSalary();
-		if (this.income < 9000000) return this.income;
+		this.income = (long) 0;
+		if (this.getSalary() < 9000000) this.income = this.getSalary();
 		if (this.getSalary() >= 9000000 && this.getSalary() <= 15000000) this.income = (long) (this.getSalary()*0.9);
 		if (this.getSalary() > 15000000) this.income = (long) (this.getSalary()*0.88);
 		return this.income;

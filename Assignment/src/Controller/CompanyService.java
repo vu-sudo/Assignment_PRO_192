@@ -122,7 +122,7 @@ public class CompanyService implements ServiceInterface{
 					//Update email
 					String oldEmail = employees.getEmail();
 					msg = "Old email: " + oldEmail + ", new email: ";
-					String newEmail = Validation.inputNonBlankStr(msg);
+					String newEmail = Validation.inputPattern(msg,"^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$");
 					employees.setEmail(newEmail);
 					//Update address
 					String oldAddress = employees.getAddress();
@@ -144,7 +144,7 @@ public class CompanyService implements ServiceInterface{
 						//Update commission
 						Double oldCommission = mktStaff.getCommissionSalary();
 						msg = "Old commission salary: " + oldCommission + ", new commission salary: ";
-						Double newCommission = Validation.InputDouble(msg, 0.0, 10000.0);
+						Double newCommission = Validation.InputDouble(msg, 0.0, 100000.0);
 						mktStaff.setCommissionSalary(newCommission);
 					}
 					if (employees instanceof DepartmentManager) {
@@ -158,16 +158,7 @@ public class CompanyService implements ServiceInterface{
 			}
 		}
 		
-	
 	@Override
-	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee) {
-		ArrayList<Employee> temp = new ArrayList<>();
-		for(Employee i : employeeList) {
-			if (employee.test(i)) temp.add(i);
-		}
-		return temp;
-	}
-
 	public ArrayList<Employee> findEmpployeeBySalaryRange(Long minSalary, Long maxSalary) {
 		ArrayList<Employee> temp = new ArrayList<>();
 		for(Employee item: employeeList) {
@@ -232,7 +223,7 @@ public class CompanyService implements ServiceInterface{
 		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputNonBlankStr("Address: ");
-		newEmail = Validation.inputNonBlankStr("Email: ");
+		newEmail = Validation.inputPattern("Email: ","^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$");
 		newSalary = Validation.InputLong("Salary: ", 0, 1000000000);
 		Employee administrative = new AdministrativeStaff("Administrative Staff", newId, newName, newAge, newAddress, newEmail, newSalary);
 		employeeList.add(administrative);
@@ -264,7 +255,7 @@ public class CompanyService implements ServiceInterface{
 		newEmail = Validation.inputNonBlankStr("Email: ");
 		newSalary = Validation.InputLong("Salary: ", 0, 1000000000);
 		newSales = Validation.InputInt("Sales: ", 0, 1000000);
-		newCommission = Validation.InputDouble("Commission: ", 0.0, 10000.0);
+		newCommission = Validation.InputDouble("Commission: ", 0.0, 100000.0);
 		Employee marketing = new MarketingStaff("Marketing Staff", newId, newName, newAge, newAddress, newEmail, newSalary, newSales, newCommission);
 		employeeList.add(marketing);
 	}
@@ -315,4 +306,5 @@ public class CompanyService implements ServiceInterface{
 		setList.clear();
 		return olderEmployee;
 	}
+
 }

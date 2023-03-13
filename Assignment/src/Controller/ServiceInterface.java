@@ -12,7 +12,7 @@ public interface ServiceInterface {
 	public void exportEmployeeList(ArrayList<Employee> list); //Dung
 	public void deleteEmployeeById();//Hoang
 	public void updateEmployeeInfo(); //Hoang
-	public ArrayList<Employee> findEmployeeBySalary(Predicate<Employee> employee);//Hoang
+	public ArrayList<Employee> findEmpployeeBySalaryRange(Long min, Long max);//Hoang
 	public void sortListByName(); //Binh
 	public void sortListBySalary();//Binh
 	public ArrayList<Employee> exportOlderEmployee(); //Hoang
