@@ -24,7 +24,7 @@ public class MarketingStaff extends Employee implements ModelInterface{
 		this.calculateInCome();
 	}
 
-	public double getSales() {
+	public Integer getSales() {
 		return sales;
 	}
 

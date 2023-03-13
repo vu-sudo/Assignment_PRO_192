@@ -135,6 +135,25 @@ public class CompanyService implements ServiceInterface{
 					Long newSalary = Validation.InputLong(msg, 0, 1000000000);
 					employees.setSalary(newSalary);
 					
+					if (employees instanceof MarketingStaff) {
+						MarketingStaff mktStaff = (MarketingStaff) employees;
+						Integer oldSales = mktStaff.getSales();
+						msg = "Old sales: " + oldSales + ", new sales: ";
+						Integer newSales = Validation.InputInt(msg, 0, 1000000);
+						mktStaff.setSales(newSales);
+						//Update commission
+						Double oldCommission = mktStaff.getCommissionSalary();
+						msg = "Old commission salary: " + oldCommission + ", new commission salary: ";
+						Double newCommission = Validation.InputDouble(msg, 0.0, 10000.0);
+						mktStaff.setCommissionSalary(newCommission);
+					}
+					if (employees instanceof DepartmentManager) {
+						DepartmentManager manager = (DepartmentManager) employees;
+						Long oldResponsible = manager.getResponsibleSalary();
+						msg = "Old responsibile salary: " + oldResponsible + ", new responsible salary: ";
+						Long newResponsible = Validation.InputLong(msg, 0, 1000000000);
+						manager.setResponsibleSalary(newResponsible);
+					}
 				}
 			}
 		}
@@ -216,7 +235,7 @@ public class CompanyService implements ServiceInterface{
 		String newAddress;
 		String newEmail;
 		Long newSalary;
-		Integer newSale;
+		Integer newSales;
 		Double newCommission;
 		boolean codeDuplicated = false;
 		do {
@@ -234,9 +253,9 @@ public class CompanyService implements ServiceInterface{
 		newAddress = Validation.inputNonBlankStr("Address: ");
 		newEmail = Validation.inputNonBlankStr("Email: ");
 		newSalary = Validation.InputLong("Salary: ", 0, 1000000000);
-		newSale = Validation.InputInt("Sales: ", 0, 1000000);
+		newSales = Validation.InputInt("Sales: ", 0, 1000000);
 		newCommission = Validation.InputDouble("Commission: ", 0.0, 10000.0);
-		Employee marketing = new MarketingStaff("Marketing Staff", newId, newName, newAge, newAddress, newEmail, newSalary, newSale, newCommission);
+		Employee marketing = new MarketingStaff("Marketing Staff", newId, newName, newAge, newAddress, newEmail, newSalary, newSales, newCommission);
 		employeeList.add(marketing);
 	}
 	
