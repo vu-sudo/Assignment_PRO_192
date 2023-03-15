@@ -61,20 +61,19 @@ public class CompanyManagement extends Menu{
 	public void Display() {
 		service.exportEmployeeList();
 	}
+	
 	public void Sort() {
 		if(service.returnList().isEmpty()) {
 			System.out.println("EMPTY LIST! CAN'T NOT PERFORM SORT");
 		} else {
-			
-							System.out.println("EMPLOYEE LIST BEFORE SORTED BY NAME AND SALARY:");
-							service.exportEmployeeList();
-							System.out.println("\nEMPLOYEE LIST AFTER SORTED BY NAME AND SALARY:");
-							service.sortListByNameandSalary();
-							service.exportEmployeeList();
-						
-							
-					}
-				}
+			System.out.println("EMPLOYEE LIST BEFORE SORTED BY NAME AND SALARY:");
+			service.exportEmployeeList();
+			System.out.println("\nEMPLOYEE LIST AFTER SORTED BY NAME AND SALARY:");
+			service.sortListByNameandSalary();
+			service.exportEmployeeList();	
+		}
+	}
+	
 	public void findBySalaryRange() {
 		Long minSalary = Validation.InputLong("Enter min salary: ", 0, 1000000000);
 		Long maxSalar = Validation.InputLong("Enter max salary: ", 0, 1000000000);
