@@ -66,8 +66,7 @@ public class CompanyManagement extends Menu{
 			System.out.println("EMPTY LIST! CAN'T NOT PERFORM SORT");
 		} else {
 			String[] eMenu = {
-					"Sort list by name.",
-					"Sort list by salary",
+					"Sort list by name and salary.",
 			};
 
 			Menu m = new Menu("CHOOSE SORT OPTION", eMenu) {
@@ -75,17 +74,10 @@ public class CompanyManagement extends Menu{
 				public void execute(int n) {
 					switch(n) {
 						case 1:
-							System.out.println("EMPLOYEE LIST BEFORE SORTED BY NAME:");
+							System.out.println("EMPLOYEE LIST BEFORE SORTED BY NAME AND SALARY:");
 							service.exportEmployeeList();
-							System.out.println("\nEMPLOYEE LIST AFTER SORTED BY NAME:");
-							service.sortListByName();
-							service.exportEmployeeList();
-							break;
-						case 2:
-							System.out.println("EMPLOYEE LIST BEFORE SORTED BY SALARY:");
-							service.exportEmployeeList();
-							System.out.println("\nEMPLOYEE LIST AFTER SORTED BY SALARY:");
-							service.sortListBySalary();
+							System.out.println("\nEMPLOYEE LIST AFTER SORTED BY NAME AND SALARY:");
+							service.sortListByNameandSalary();
 							service.exportEmployeeList();
 							break;
 						default:
