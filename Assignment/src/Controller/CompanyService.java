@@ -186,11 +186,7 @@ public class CompanyService implements ServiceInterface{
 	                return result;
 	            }
 	        });
-
-	        for (Employee nv : employeeList) {
-	            System.out.println(nv.getName() + " - " + nv.getIncome());
-	        }
-	    }
+		}														
 	public Employee search(String code) {
 		code = code.trim().toUpperCase();
 		for(Employee ls : employeeList) {
