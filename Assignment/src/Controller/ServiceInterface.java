@@ -13,7 +13,6 @@ public interface ServiceInterface {
 	public void deleteEmployeeById();//Hoang
 	public void updateEmployeeInfo(); //Hoang
 	public ArrayList<Employee> findEmpployeeBySalaryRange(Long min, Long max);//Hoang
-	public void sortListByName(); //Binh
-	public void sortListBySalary();//Binh
+	public void sortListByNameandSalary();
 	public ArrayList<Employee> exportOlderEmployee(); //Hoang
 }
