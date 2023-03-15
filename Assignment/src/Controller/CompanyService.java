@@ -137,7 +137,6 @@ public class CompanyService implements ServiceInterface{
 					String oldName = employees.getName();
 					String msg = "Old name: " + oldName + ", new name: ";
 					String newName = Validation.inputPattern(msg, "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
-					newName.toUpperCase();
 					employees.setName(newName);
 					//Update age
 					Integer oldAge = employees.getAge();
@@ -171,6 +170,7 @@ public class CompanyService implements ServiceInterface{
 						msg = "Old commission salary: " + oldCommission + ", new commission salary: ";
 						Double newCommission = Validation.InputDouble(msg, 0.0, 100000.0);
 						mktStaff.setCommissionSalary(newCommission);
+						mktStaff.calculateInCome();
 					}
 					if (employees instanceof DepartmentManager) {
 						DepartmentManager manager = (DepartmentManager) employees;
@@ -178,6 +178,11 @@ public class CompanyService implements ServiceInterface{
 						msg = "Old responsibile salary: " + oldResponsible + ", new responsible salary: ";
 						Long newResponsible = Validation.InputLong(msg, 0, 1000000000);
 						manager.setResponsibleSalary(newResponsible);
+						manager.calculateInCome();
+					}
+					if (employees instanceof AdministrativeStaff) {
+						AdministrativeStaff admin = (AdministrativeStaff) employees;
+						admin.calculateInCome();
 					}
 				}
 			}
@@ -245,7 +250,6 @@ public class CompanyService implements ServiceInterface{
 		}
 		while (codeDuplicated == true);
 		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
-		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
 		newEmail = Validation.inputPattern("Email: ","^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$");
@@ -274,7 +278,6 @@ public class CompanyService implements ServiceInterface{
 		}
 		while (codeDuplicated == true);
 		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
-		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");	
 		newEmail = Validation.inputNonBlankStr("Email: ");
@@ -304,7 +307,6 @@ public class CompanyService implements ServiceInterface{
 		}
 		while (codeDuplicated == true);
 		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
-		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
 		newEmail = Validation.inputNonBlankStr("Email: ");
