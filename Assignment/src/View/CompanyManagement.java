@@ -61,35 +61,19 @@ public class CompanyManagement extends Menu{
 	public void Display() {
 		service.exportEmployeeList();
 	}
+	
 	public void Sort() {
 		if(service.returnList().isEmpty()) {
 			System.out.println("EMPTY LIST! CAN'T NOT PERFORM SORT");
 		} else {
-			String[] eMenu = {
-					"Sort list by name and salary.",
-			};
-
-			Menu m = new Menu("CHOOSE SORT OPTION", eMenu) {
-				@Override
-				public void execute(int n) {
-					switch(n) {
-						case 1:
-							System.out.println("EMPLOYEE LIST BEFORE SORTED BY NAME AND SALARY:");
-							service.exportEmployeeList();
-							System.out.println("\nEMPLOYEE LIST AFTER SORTED BY NAME AND SALARY:");
-							service.sortListByNameandSalary();
-							service.exportEmployeeList();
-							break;
-						default:
-							System.out.println("BACK TO MAIN MENU!");
-							return;
-					}
-				}
-				
-			};
-			m.run();
+			System.out.println("EMPLOYEE LIST BEFORE SORTED BY NAME AND SALARY:");
+			service.exportEmployeeList();
+			System.out.println("\nEMPLOYEE LIST AFTER SORTED BY NAME AND SALARY:");
+			service.sortListByNameandSalary();
+			service.exportEmployeeList();	
 		}
 	}
+	
 	public void findBySalaryRange() {
 		Long minSalary = Validation.InputLong("Enter min salary: ", 0, 1000000000);
 		Long maxSalar = Validation.InputLong("Enter max salary: ", 0, 1000000000);

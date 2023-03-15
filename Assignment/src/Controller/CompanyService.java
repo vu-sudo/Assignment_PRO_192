@@ -71,16 +71,41 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void exportEmployeeList() {
+				System.out.format("| %20s | %5s | %20s | %5s | %20s | %10s | %15s | %20s | %5s | %10s | %15s | \n", "ROLE", "ID", "NAME", "AGE", "EMAIL", "ADDRESS", "SALARY", "RESPONSIBLE SALARY", "SALE", "COMMISSION", "INCOME" );
 		for (Employee ls: employeeList) {
-			System.out.println(ls.toString());
+			if (ls instanceof AdministrativeStaff) {
+				AdministrativeStaff admin = (AdministrativeStaff) ls;
+				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", admin.getRole(), admin.getId(), admin.getName(), admin.getAge(), admin.getEmail(), admin.getAddress(),admin.getSalary(), 0 , 0, 0.0, admin.getIncome());
+			} 
+			if (ls instanceof DepartmentManager) {
+				DepartmentManager manager = (DepartmentManager) ls;
+				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", manager.getRole(), manager.getId(), manager.getName(), manager.getAge(), manager.getEmail(), manager.getAddress(),manager.getSalary(), manager.getResponsibleSalary() , 0, 0.0, manager.getIncome());
+			}
+			if (ls instanceof MarketingStaff) {
+				MarketingStaff maketing = (MarketingStaff) ls;
+				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", maketing.getRole(), maketing.getId(), maketing.getName(), maketing.getAge(), maketing.getEmail(), maketing.getAddress(),maketing.getSalary(), 0 , maketing.getSales(), Math.floor(maketing.getCommissionSalary()), maketing.getIncome());
+			}
 		}
 		
 	}
 	@Override
 	public void exportEmployeeList(ArrayList<Employee> list) {
-		for (Employee ls : list) {
-			System.out.println(ls.toString());
+		System.out.format("| %20s | %5s | %20s | %5s | %20s | %10s | %15s | %20s | %5s | %10s | %15s | \n", "ROLE", "ID", "NAME", "AGE", "EMAIL", "ADDRESS", "SALARY", "RESPONSIBLE SALARY", "SALE", "COMMISSION", "INCOME" );
+		for (Employee ls: list) {
+			if (ls instanceof AdministrativeStaff) {
+				AdministrativeStaff admin = (AdministrativeStaff) ls;
+				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", admin.getRole(), admin.getId(), admin.getName(), admin.getAge(), admin.getEmail(), admin.getAddress(),admin.getSalary(), 0 , 0, 0.0, admin.getIncome());
+			} 
+			if (ls instanceof DepartmentManager) {
+				DepartmentManager manager = (DepartmentManager) ls;
+				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", manager.getRole(), manager.getId(), manager.getName(), manager.getAge(), manager.getEmail(), manager.getAddress(),manager.getSalary(), manager.getResponsibleSalary() , 0, 0.0, manager.getIncome());
+			}
+			if (ls instanceof MarketingStaff) {
+				MarketingStaff maketing = (MarketingStaff) ls;
+				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", maketing.getRole(), maketing.getId(), maketing.getName(), maketing.getAge(), maketing.getEmail(), maketing.getAddress(),maketing.getSalary(), 0 , maketing.getSales(), Math.floor(maketing.getCommissionSalary()), maketing.getIncome());
+			}
 		}
+		
 	}
 	
 	@Override
@@ -111,7 +136,7 @@ public class CompanyService implements ServiceInterface{
 					//Update name
 					String oldName = employees.getName();
 					String msg = "Old name: " + oldName + ", new name: ";
-					String newName = Validation.inputPattern(msg, "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+					String newName = Validation.inputPattern(msg, "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 					newName.toUpperCase();
 					employees.setName(newName);
 					//Update age
@@ -186,7 +211,7 @@ public class CompanyService implements ServiceInterface{
 	                return result;
 	            }
 	        });
-		}	
+		}														
 	public Employee search(String code) {
 		code = code.trim().toUpperCase();
 		for(Employee ls : employeeList) {
@@ -219,7 +244,7 @@ public class CompanyService implements ServiceInterface{
 			}
 		}
 		while (codeDuplicated == true);
-		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
@@ -248,7 +273,7 @@ public class CompanyService implements ServiceInterface{
 			}
 		}
 		while (codeDuplicated == true);
-		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");	
@@ -278,7 +303,7 @@ public class CompanyService implements ServiceInterface{
 			}
 		}
 		while (codeDuplicated == true);
-		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
