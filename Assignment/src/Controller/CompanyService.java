@@ -169,24 +169,24 @@ public class CompanyService implements ServiceInterface{
 		return temp;
 	}
 	@Override
-	public void sortListByName() {
+	public void sortListByNameandSalary() {
 		Collections.sort(employeeList, new Comparator<Employee>() {
 			@Override
 			public int compare(Employee o1, Employee o2) {
-				return o1.getName().compareTo(o2.getName());
-			}
-		}  );
-	}
-	@Override
-	public void sortListBySalary() {
-		Collections.sort(employeeList, new Comparator<Employee>() {
-			@Override
-			public int compare(Employee o1, Employee o2) {
-				return o2.getIncome().compareTo(o1.getIncome());
-			}
+				 int result = o1.getName().compareTo(o2.getName()); // sắp xếp theo họ tên
 
-		}  );
-	}
+	                if (result == 0) { // nếu hai nhân viên cùng họ tên
+	                    if (o1.getIncome() > o2.getIncome()) {
+	                        result = -1; // đổi chỗ nếu lương của nhân viên này lớn hơn
+	                    } else if (o1.getIncome() < o2.getIncome()) {
+	                        result = 1; // đổi chỗ nếu lương của nhân viên này nhỏ hơn
+	                    }
+	                }
+
+	                return result;
+	            }
+	        });
+		}														
 	public Employee search(String code) {
 		code = code.trim().toUpperCase();
 		for(Employee ls : employeeList) {
@@ -293,7 +293,7 @@ public class CompanyService implements ServiceInterface{
 	public ArrayList<Employee> exportOlderEmployee() {
 		Set<Employee> setList = new HashSet<>();
 		ArrayList<Employee> olderEmployee = new ArrayList<>();
-		this.sortListBySalary();
+		this.sortListByNameandSalary();
 		
 		for(Employee i: employeeList) {
 			if(i.getAge()>=60) {
