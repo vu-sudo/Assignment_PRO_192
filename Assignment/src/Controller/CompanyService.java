@@ -111,7 +111,7 @@ public class CompanyService implements ServiceInterface{
 					//Update name
 					String oldName = employees.getName();
 					String msg = "Old name: " + oldName + ", new name: ";
-					String newName = Validation.inputPattern(msg, "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+					String newName = Validation.inputPattern(msg, "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 					newName.toUpperCase();
 					employees.setName(newName);
 					//Update age
@@ -219,7 +219,7 @@ public class CompanyService implements ServiceInterface{
 			}
 		}
 		while (codeDuplicated == true);
-		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
@@ -248,7 +248,7 @@ public class CompanyService implements ServiceInterface{
 			}
 		}
 		while (codeDuplicated == true);
-		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");	
@@ -278,7 +278,7 @@ public class CompanyService implements ServiceInterface{
 			}
 		}
 		while (codeDuplicated == true);
-		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
+		newName = Validation.inputPattern("Name of employee: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,3}$");
 		newName = newName.toUpperCase();
 		newAge = Validation.InputInt("Age <above 18>: ", 18, 100);
 		newAddress = Validation.inputPattern("Address: ", "^[a-zA-Z]{1,}(?: [a-zA-Z]+){0,2}$");
