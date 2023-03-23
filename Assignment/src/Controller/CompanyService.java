@@ -112,7 +112,7 @@ public class CompanyService implements ServiceInterface{
 		if(employeeList.isEmpty()) {
 			System.out.println("Empty list. No remove can be performed!");
 		} else {
-			String eID = Validation.inputStr("Input ID to delete employee: ");
+			String eID = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
 			Employee employee = this.search(eID);
 			if (employee == null) {
 				System.out.println("Employee " + eID + " does not exist!");
@@ -127,7 +127,7 @@ public class CompanyService implements ServiceInterface{
 		if(employeeList.isEmpty()) {
 			System.out.println("Empty list");
 		} else {
-			String id = Validation.inputStr("Input ID to update employee: ");
+			String id = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
 			Employee employees = this.search(id);
 			if (employees == null) {
 				System.out.println("Employee " + id + " doesn't exist!");
@@ -227,7 +227,7 @@ public class CompanyService implements ServiceInterface{
 	}
 	
 	public Employee search(String code) {
-		code = code.trim().toUpperCase();
+		code = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
 		for(Employee ls : employeeList) {
 			if (ls.getId().equals(code))
 				return ls;
@@ -236,7 +236,7 @@ public class CompanyService implements ServiceInterface{
 	}
 	
 	public boolean isCodeDuplicated (String code) {
-		code = code.trim().toUpperCase();
+		code = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
 		return search(code) != null;
 	}
 
@@ -250,7 +250,7 @@ public class CompanyService implements ServiceInterface{
 		Long newSalary;
 		boolean codeDuplicated = false;
 		do {
-			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1}");
+			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
 			newId = newId.trim().toUpperCase();
 			codeDuplicated = isCodeDuplicated(newId);
 			if (codeDuplicated) {
@@ -278,7 +278,7 @@ public class CompanyService implements ServiceInterface{
 		Double newCommission;
 		boolean codeDuplicated = false;
 		do {
-			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1}");
+			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
 			newId = newId.trim().toUpperCase();
 			codeDuplicated = isCodeDuplicated(newId);
 			if (codeDuplicated) {
@@ -307,7 +307,7 @@ public class CompanyService implements ServiceInterface{
 		Long newResponsibleSalary;
 		boolean codeDuplicated = false;
 		do {
-			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1}");
+			newId = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
 			newId = newId.trim().toUpperCase();
 			codeDuplicated = isCodeDuplicated(newId);
 			if (codeDuplicated) {
@@ -328,20 +328,23 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public ArrayList<Employee> exportOlderEmployee() {
 		ArrayList<Employee> olderEmployee = new ArrayList<>();
-		if(employeeList.isEmpty()) {
-			System.out.println("Empty list");
-		} else {
-		
-		this.sortListByNameandSalary();
+		Collections.sort(employeeList,new Comparator<Employee>() {
+			@Override
+			public int compare(Employee o2, Employee o1) {
+				// TODO Auto-generated method stub
+				return Long.compare(o1.getIncome(), o2.getIncome());
+			}
+		});
+		int count=0;
 		for(Employee i: employeeList) {
 			if(i.getAge()>=60) {
-				for(int j = 0; j<3; j++) {
-					olderEmployee.add(i);
-					}
+				olderEmployee.add(i);
+				count++;
+				if(count==3) {
+					break;
 				}
 			}
 		}
 		return olderEmployee;
 	}
-
 }
