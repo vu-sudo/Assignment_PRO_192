@@ -26,7 +26,14 @@ public abstract class Menu {
 	
 	public int getChoice() {
 		menuDisplay();
-		int choice = sc.nextInt();
+		int choice = 0;
+		while(choice == 0) {
+			try {
+				choice = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("Input failed, pls enter a number(integer)!");
+			}
+		}
 		return choice;
 	}
 	

@@ -23,8 +23,6 @@ public class CompanyService implements ServiceInterface{
 	
 	public CompanyService() {
 		super();
-		String path = Paths.get("").toAbsolutePath().toString();
-		loadData(path + "/src/Controller/employeeSource.txt" );
 	}
 	
 	public ArrayList<Employee> returnList() {

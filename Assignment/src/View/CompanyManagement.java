@@ -3,6 +3,7 @@ package View;
 import Controller.CompanyService;
 import Model.Employee;
 
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,6 +12,7 @@ public class CompanyManagement extends Menu{
 	private CompanyService service = new CompanyService();
 	
 	static String[] menu = {
+			"Load data from file.",
 			"Display all employee.",
 			"Delete a employee by id.",
 			"Update info a employee by id.",
@@ -29,31 +31,34 @@ public class CompanyManagement extends Menu{
 	@Override
 	public void execute(int n) {
 		switch(n) {
-		case 1:
+		case 1: 
+			loadFile();
+			break;
+		case 2:
 			Display();
 			break; //Display all employee.
-		case 2: 
+		case 3: 
 			service.deleteEmployeeById();
 			break; //Delete a employee by id
-		case 3: 
+		case 4: 
 			service.updateEmployeeInfo();
 			break; //Update info a employee by id.
-		case 4: 
+		case 5: 
 			findBySalaryRange();
 			break; //Find employee by salary.
-		case 5: 
+		case 6: 
 			Sort();
 			break; //Sort list of employee.
-		case 6: 
+		case 7: 
 			EnterListOfEmployee(); 
 			break; 
-		case 7: 
+		case 8: 
 			service.writeData();
 			break; 
-		case 8: 
+		case 9: 
 			exportOlderEmpoyeeList();
 			break; //Export three older employee with highest salary.
-		case 9: System.out.println("Program end! \nThank you for using my program");
+		case 10: System.out.println("Program end! \nThank you for using my program");
 		default: System.exit(0);
 		}
 	}
@@ -61,7 +66,11 @@ public class CompanyManagement extends Menu{
 	public void Display() {
 		service.exportEmployeeList();
 	}
-	
+	public void loadFile() {
+		String path = Paths.get("").toAbsolutePath().toString();
+		service.loadData(path + "/src/Controller/employeeSource.txt");
+		System.out.println("LOAD FILE SUCESSFULLY!");
+	}
 	public void Sort() {
 		if(service.returnList().isEmpty()) {
 			System.out.println("EMPTY LIST! CAN'T NOT PERFORM SORT");
