@@ -53,8 +53,8 @@ public class MarketingStaff extends Employee implements ModelInterface{
 		Long realSalary = (long) (this.getSalary() + this.getSales()*this.getCommissionSalary());
 		this.income = (long) 0;
 		if (realSalary < 9000000) this.income = realSalary;
-		if (realSalary >= 9000000 && realSalary <= 15000000) this.income = (long) (realSalary*0.9);
-		if (realSalary > 15000000) this.income = (long) (realSalary*0.88);
+		if (realSalary >= 9000000 && realSalary <= 15000000) this.income = (long) ((realSalary-9000000)*0.9 + 9000000);
+		if (realSalary > 15000000) this.income = (long) ((realSalary-15000000)*0.88 + 6000000 *0.9 + 9000000);
 		return this.income;
 	}
 	

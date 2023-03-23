@@ -3,3 +3,7 @@ Department manager;D6;Bui Van Lam;24;Da Nang;lam@gmail.com;60000000;250000
 Marketing staff;D4;Le Hoang Nam;22;Hue;nam@gmail.com;50000000;45121;33333
 Administrative staff;D1;Dinh Van Ha;20;Kom Tum;ha@gmail.com;20000000
 Administrative staff;D2;Dinh Van Binh;20;Ha Noi;binh@gmail.com;6520000
+Marketing staff;D5;Vo Van Vu;63;Hue;vuvu@gmail.com;100000000;4500;33333
+Administrative staff;D7;Huynh Ngoc Bao Khanh;65;Kom Tum;khanh@gmail.com;80000000
+Administrative staff;D8;Nguyen Phuoc Binh;70;Kom Tum;binh@gmail.com;85000000
+Department manager;D9;Nguyen Thanh Hoang;62;Da Nang;hoang@gmail.com;70000000;200000

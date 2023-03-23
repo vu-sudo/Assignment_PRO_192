@@ -70,6 +70,9 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void exportEmployeeList() {
+		if(employeeList.isEmpty()) {
+			System.out.println("Empty list");
+		} else {
 				System.out.format("| %20s | %5s | %20s | %5s | %20s | %10s | %15s | %20s | %5s | %10s | %15s | \n", "ROLE", "ID", "NAME", "AGE", "EMAIL", "ADDRESS", "SALARY", "RESPONSIBLE SALARY", "SALE", "COMMISSION", "INCOME" );
 		for (Employee ls: employeeList) {
 			if (ls instanceof AdministrativeStaff) {
@@ -85,10 +88,14 @@ public class CompanyService implements ServiceInterface{
 				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", maketing.getRole(), maketing.getId(), maketing.getName(), maketing.getAge(), maketing.getEmail(), maketing.getAddress(),maketing.getSalary(), 0 , maketing.getSales(), Math.floor(maketing.getCommissionSalary()), maketing.getIncome());
 			}
 		}
+		}
 		
 	}
 	@Override
 	public void exportEmployeeList(ArrayList<Employee> list) {
+		if(employeeList.isEmpty()) {
+			System.out.println("Empty list");
+		} else {
 		System.out.format("| %20s | %5s | %20s | %5s | %20s | %10s | %15s | %20s | %5s | %10s | %15s | \n", "ROLE", "ID", "NAME", "AGE", "EMAIL", "ADDRESS", "SALARY", "RESPONSIBLE SALARY", "SALE", "COMMISSION", "INCOME" );
 		for (Employee ls: list) {
 			if (ls instanceof AdministrativeStaff) {
@@ -104,6 +111,7 @@ public class CompanyService implements ServiceInterface{
 				System.out.format("| %20s | %5s | %20s | %5d | %20s | %10s | %15d | %20d | %5d | %10.2f | %15d | \n", maketing.getRole(), maketing.getId(), maketing.getName(), maketing.getAge(), maketing.getEmail(), maketing.getAddress(),maketing.getSalary(), 0 , maketing.getSales(), Math.floor(maketing.getCommissionSalary()), maketing.getIncome());
 			}
 		}
+		}
 		
 	}
 	
@@ -112,7 +120,7 @@ public class CompanyService implements ServiceInterface{
 		if(employeeList.isEmpty()) {
 			System.out.println("Empty list. No remove can be performed!");
 		} else {
-			String eID = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
+			String eID = Validation.inputStr("Enter ID to delete");
 			Employee employee = this.search(eID);
 			if (employee == null) {
 				System.out.println("Employee " + eID + " does not exist!");
@@ -127,7 +135,7 @@ public class CompanyService implements ServiceInterface{
 		if(employeeList.isEmpty()) {
 			System.out.println("Empty list");
 		} else {
-			String id = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
+			String id = Validation.inputStr("Enter ID to update");
 			Employee employees = this.search(id);
 			if (employees == null) {
 				System.out.println("Employee " + id + " doesn't exist!");
@@ -227,7 +235,7 @@ public class CompanyService implements ServiceInterface{
 	}
 	
 	public Employee search(String code) {
-		code = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
+		code = code.trim().toUpperCase();
 		for(Employee ls : employeeList) {
 			if (ls.getId().equals(code))
 				return ls;
@@ -236,7 +244,7 @@ public class CompanyService implements ServiceInterface{
 	}
 	
 	public boolean isCodeDuplicated (String code) {
-		code = Validation.inputPattern("ID: <pattern D0>", "[dD][\\d]{1,}");
+		code = code.trim().toUpperCase();
 		return search(code) != null;
 	}
 
@@ -332,7 +340,7 @@ public class CompanyService implements ServiceInterface{
 			@Override
 			public int compare(Employee o2, Employee o1) {
 				// TODO Auto-generated method stub
-				return Long.compare(o1.getIncome(), o2.getIncome());
+				return Long.compare(o1.getSalary(), o2.getSalary());
 			}
 		});
 		int count=0;
