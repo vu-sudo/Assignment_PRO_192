@@ -10,24 +10,35 @@ public class Validation {
 			min = max;
 			max = t;
 		}
-		int data;
+		int data = 0;
 		do {
-			System.out.print(msg);
-			data = Integer.parseInt(sc.nextLine());
+			try {
+				System.out.print(msg);
+				data = Integer.parseInt(sc.nextLine());
+			}
+			catch (NumberFormatException e) {
+				System.err.println("Please enter number!");
+			}
 		}
 		while (data < min || data > max);
 		return data;
 	}
+	
 	public static long InputLong(String msg, long min, long max) {
 		if (min>max) {
 			long t = min;
 			min = max;
 			max = t;
 		}
-		long data;
+		long data = 0;
 		do {
-			System.out.print(msg);
-			data = Long.parseLong(sc.nextLine());
+			try {
+				System.out.print(msg);
+				data = Long.parseLong(sc.nextLine());
+			}
+			catch (NumberFormatException e) {
+				System.err.println("Please enter number!");
+			}
 		}
 		while (data < min || data > max);
 		return data;
@@ -38,10 +49,15 @@ public class Validation {
 			min = max;
 			max = t;
 		}
-		double data;
+		double data = 0;
 		do {
-			System.out.print(msg);
-			data = Long.parseLong(sc.nextLine());
+			try {
+				System.out.print(msg);
+				data = Double.parseDouble(sc.nextLine());
+			}
+			catch (NumberFormatException e) {
+				System.err.println("Please enter number!");
+			}
 		}
 		while (data < min || data > max);
 		return data;

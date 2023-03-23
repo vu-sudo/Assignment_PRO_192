@@ -61,6 +61,7 @@ public class CompanyService implements ServiceInterface{
 			FileWriter wf = new FileWriter(path + "/src/Controller/StoreEmployeeData.txt");
 			for (Employee item: employeeList) {
 				wf.write(item + System.lineSeparator());
+
 			}
 			wf.close();
 			System.out.println("Successfully wrote to the file!");
@@ -191,6 +192,11 @@ public class CompanyService implements ServiceInterface{
 	@Override
 	public ArrayList<Employee> findEmpployeeBySalaryRange(Long minSalary, Long maxSalary) {
 		ArrayList<Employee> temp = new ArrayList<>();
+		if (minSalary > maxSalary) {
+			Long t = minSalary;
+			minSalary = maxSalary;
+			maxSalary = t;
+		}
 		for(Employee item: employeeList) {
 			if(item.getIncome() >= minSalary && item.getIncome() <= maxSalary) {
 				temp.add(item);
@@ -200,15 +206,18 @@ public class CompanyService implements ServiceInterface{
 	}
 	@Override
 	public void sortListByNameandSalary() {
+		if(employeeList.isEmpty()) {
+			System.out.println("Empty list");
+		} else {
 		Collections.sort(employeeList, new Comparator<Employee>() {
 			@Override
 			public int compare(Employee o1, Employee o2) {
 				 int result = o1.getName().compareTo(o2.getName()); // sắp xếp theo họ tên
 
 	                if (result == 0) { // nếu hai nhân viên cùng họ tên
-	                    if (o1.getIncome() > o2.getIncome()) {
+	                    if (o1.getSalary() > o2.getSalary()) {
 	                        result = -1; // đổi chỗ nếu lương của nhân viên này lớn hơn
-	                    } else if (o1.getIncome() < o2.getIncome()) {
+	                    } else if (o1.getSalary() < o2.getSalary()) {
 	                        result = 1; // đổi chỗ nếu lương của nhân viên này nhỏ hơn
 	                    }
 	                }
@@ -216,7 +225,9 @@ public class CompanyService implements ServiceInterface{
 	                return result;
 	            }
 	        });
-		}														
+		}
+	}
+	
 	public Employee search(String code) {
 		code = code.trim().toUpperCase();
 		for(Employee ls : employeeList) {
@@ -318,19 +329,20 @@ public class CompanyService implements ServiceInterface{
 	
 	@Override
 	public ArrayList<Employee> exportOlderEmployee() {
-		Set<Employee> setList = new HashSet<>();
 		ArrayList<Employee> olderEmployee = new ArrayList<>();
-		this.sortListByNameandSalary();
+		if(employeeList.isEmpty()) {
+			System.out.println("Empty list");
+		} else {
 		
+		this.sortListByNameandSalary();
 		for(Employee i: employeeList) {
 			if(i.getAge()>=60) {
 				for(int j = 0; j<3; j++) {
-					setList.add(i);
+					olderEmployee.add(i);
+					}
 				}
 			}
 		}
-		olderEmployee.addAll(setList);
-		setList.clear();
 		return olderEmployee;
 	}
 

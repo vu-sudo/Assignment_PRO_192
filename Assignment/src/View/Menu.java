@@ -24,9 +24,17 @@ public abstract class Menu {
 		System.out.println("----------------------------");
 	}
 	
-	public int getChoice() {
+	public Integer getChoice() {
 		menuDisplay();
-		int choice = sc.nextInt();
+		int choice = 0;
+		while (choice == 0) {
+			try {
+				choice = Integer.parseInt(sc.nextLine());
+			}
+			catch (NumberFormatException e) {
+				System.err.println("Enter a number!");
+			}
+		}
 		return choice;
 	}
 	
