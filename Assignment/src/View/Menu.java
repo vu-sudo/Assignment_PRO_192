@@ -27,6 +27,7 @@ public abstract class Menu {
 	public Integer getChoice() {
 		menuDisplay();
 		int choice = 0;
+
 		while (choice == 0) {
 			try {
 				choice = Integer.parseInt(sc.nextLine());
